@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="
+    https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+    <title>CHECHO BARBERS</title>
+    <script>
+
+      function validarLogin() {
+            let usu = document.getElementById("usu").value;
+            let pas = document.getElementById("pas").value;
+      
+            if (usu == "admin") {
+              if (pas == "12345") {
+                localStorage.getItem("Admin");
+                alert("Binvenido Administrador ");
+                window.open("indexAdmin.html");
+              }
+            } else if (usu == "empleado") {
+      
+                if (pas == "12345"){
+                  localStorage.getItem("empleado");
+                  alert("Binvenido Empleado ");
+                  window.open("indexEmpleado.html");
+                }
+            }else if (usu == "usuario"){
+              if (pas == "12345") {
+                    localStorage.getItem("usuario");
+                    alert("Binvenido usuario ");
+                    window.open("index.html");
+                  }
+      
+            }else {
+              alert("error en usuario o password");
+            }
+      
+      
+          }
+
+          function index(){
+
+            let c = document.getElementById("cantidadPersonas").value;
+            let h = document.getElementById("horario").value;
+
+            if(c && h != null  ){
+
+              alert("Gracias por Preferir nuestro servicio");
+
+              window.open("indexU.html");
+
+            }else{
+
+              alert("Ningun campo puede estar vacio");
+            }
+            
+          }
+
+          function indexU(){
+            alert("Sesión Cerrada")
+            window.open("../index.html");
+
+          }
+         
+  
+          
+        </script>
+</head>
+<body id="index">
+  <div id="posicion">
+    <header class="header"></header>
+    <nav class="nav">
+
+      <div class="line">
+        <ul>
+          <li>
+            <button type="button" class="btn btn-secondary color1"><a href="indexE.html">Inicio</a></button>
+
+          </li>
+          <li>
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Agenda tu cita
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item color" href="horarioE.html"> Horarios </a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Servicios
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item color" href="portafolioE.html">Barbas</a>
+                <a class="dropdown-item color" href="portafolioE.html">Cortes de cabello</a>
+                <a class="dropdown-item color" href="portafolioE.html">Tintura</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle " href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Clientes
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item color " href="listarClientesE.html"> Listar clientes</a>
+              </div>
+            </div>
+          </li>
+          <li>
+          <li>
+            <button type="button" class="btn btn-secondary color1"><a href="#contacto">Contacto</a></button>
+          </li>
+        </ul>
+      </div>
+      <div class="line">
+        <ul>
+          
+          <li>
+            <button type="button" class="btn btn-secondary color1" data-target="#loginn" onclick="indexU()">Cerrar sesión</button>
+
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+    <div id="table">
+    <table class="table table-bordered" id="tablita">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Cristian</td>
+            <td>Arboleda</td>
+            <td>852741</td>
+            <td>
+              <button type="button" class="btn btn-outline-danger">Danger</button>
+              <button type="button" class="btn btn-outline-warning">Warning</button>
+              <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#verDetalle">Info</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jorge</td>
+            <td>Medina</td>
+            <td>741258</td>
+            <td>
+              <button type="button" class="btn btn-outline-danger">Danger</button>
+              <button type="button" class="btn btn-outline-warning">Warning</button>
+              <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#verDetalle1">Info</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Paola</td>
+            <td>Vasco</td>
+            <td>369852</td>
+            <td>
+              <button type="button" class="btn btn-outline-danger">Danger</button>
+              <button type="button" class="btn btn-outline-warning">Warning</button>
+              <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#verDetalle2">Info</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>Sebastian</td>
+            <td>Itaki</td>
+            <td>789369</td>
+            <td>
+              <button type="button" class="btn btn-outline-danger">Danger</button>
+              <button type="button" class="btn btn-outline-warning">Warning</button>
+              <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#verDetalle3">Info</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>Valeria</td>
+            <td>Bustamante</td>
+            <td>741236</td>
+            <td>
+              <button type="button" class="btn btn-outline-danger">Danger</button>
+              <button type="button" class="btn btn-outline-warning">Warning</button>
+              <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#verDetalle4">Info</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td>Evelin</td>
+            <td>Rendon</td>
+            <td>132745</td>
+            <td>
+              <button type="button" class="btn btn-outline-danger">Danger</button>
+              <button type="button" class="btn btn-outline-warning">Warning</button>
+              <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#verDetalle5">Info</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td>Manual</td>
+            <td>aja</td>
+            <td>654852</td>
+            <td>
+              <button type="button" class="btn btn-outline-danger">Danger</button>
+              <button type="button" class="btn btn-outline-warning">Warning</button>
+              <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#verDetalle6">Info</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">8</th>
+            <td>Daniela</td>
+            <td>Velez</td>
+            <td>569874</td>
+            <td>
+              <button type="button" class="btn btn-outline-danger">Danger</button>
+              <button type="button" class="btn btn-outline-warning">Warning</button>
+              <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#verDetalle7">Info</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">9</th>
+            <td>Hugo</td>
+            <td>Berrio</td>
+            <td>412563</td>
+            <td>
+              <button type="button" class="btn btn-outline-danger">Danger</button>
+              <button type="button" class="btn btn-outline-warning">Warning</button>
+              <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#verDetalle8">Info</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">10</th>
+            <td>Carmelo</td>
+            <td>Valencia</td>
+            <td>365214</td>
+            <td>
+              <button type="button" class="btn btn-outline-danger">Danger</button>
+              <button type="button" class="btn btn-outline-warning">Warning</button>
+              <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#verDetalle9">Info</button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+
+    </div>
+  
+    <footer>
+
+      <div>
+        <h5>CHECHO BARBER</h5>
+        <p>Copyright © 2022 Todos los derechos reservados</p>
+        <p>Desarrollado por Juan Urrutia - Cristian Arboleda</p>
+      </div>
+      <div>
+        <h5 id="contacto">CONTACTO</h5>
+        <p> Telefono (3714526)</p>
+        <p>Gmail (chechobarber@gmail.com)</p>
+  
+      </div>
+      <div>
+        <h5>UBICACION</h5>
+        <a target="_blank"
+          href="https://www.google.com.co/maps/place/Caicedo,+Medell%C3%ADn,+Antioquia/@6.2425134,-75.5592871,16z/data=!3m1!4b1!4m5!3m4!1s0x8e44285c24125bc7:0x6dde4ed383b2b37c!8m2!3d6.2422512!4d-75.5545989?authuser=0&hl=es-419"><img
+            src="../img/maps.jpg" alt="maps" id="im4"></a>
+  
+      </div>
+    </footer>
+    
+    <div class="modal fade" id="registroo" role="dialog">
+
+      <div class="modal-dialog">
+        <div class="modal-content modContenido">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+          <div class="modal-body">
+            
+            <h3>DATOS PERSONALES</h3>
+            <br><br>
+            <label for="nombre">Nombre</label>
+            <input class="form-control" type="text" id="nombre">
+            <br>
+  
+            <label for="direccion">Direccion</label>
+            <input class="form-control" type="text" id="direccion">
+            <br>
+  
+            <label for="documento">Documento</label>
+            <input class="form-control" type="text" id="documento">
+            <br>
+  
+            <label for="correo">Usuario</label>
+            <input class="form-control" type="text" id="correo">
+            <br>
+  
+            <label for="contrasena">Contraseña</label>
+            <input class="form-control" type="text" id="contrasena" placeholder="*********">
+  
+            <br>
+            <button type="button" class="btn btn-outline-primary">Registrarse</button>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+   
+    <div class="modal fade" id="loginn" role="dialog">
+  
+      <div class="modal-dialog">
+        <div class="modal-content modContenido">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+          <div class="modal-body">
+            
+              <h3>INICIAR SESIÓN</h3>
+              <br><br>
+              
+              <div class=" section">
+                <section id="for">
+                    <form method="get" id="form">
+        
+                        <label for="fname">Usuario</label><br>
+        
+                        <input type="text" id="fname" name="username"><br>
+        
+                        <label for="lname">password</label><br>
+        
+                        <input type="text" id="lname" name="password" placeholder="*******"><br><br>
+        
+                        <button type="submit" name="enviar" class="btn btn-success">Iniciar sesion</button>
+        
+                    </form>
+                </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="verDetalle" role="dialog">
+
+      <div class="modal-dialog">
+        <div class="modal-content modContenido">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+          <div class="modal-body">
+            
+              <h3>INFORMACION</h3>
+              <br><br>
+              <label for="nombre">Nombre</label><br>
+              <input type="text" id="nombre" placeholder="Cristian" name="Nombre" required readonly>
+              <br>
+              <br>
+              <label for="apellido">Apellido</label><br>
+              <input type="text" id="apellido" placeholder="Arboleda" name="Apellido" required readonly>
+              <br>
+              <br>
+              <label for="documento">Documento</label><br>
+              <input type="text" id="documento" placeholder="852741" name="Documento" required readonly>
+              <br>
+              <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="verDetalle1" role="dialog">
+
+      <div class="modal-dialog">
+        <div class="modal-content modContenido">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+          <div class="modal-body">
+            
+              <h3>INFORMACION</h3>
+              <br><br>
+              <label for="nombre">Nombre</label><br>
+              <input type="text" id="nombre" placeholder="Jorge" name="Nombre" required readonly>
+              <br>
+              <br>
+              <label for="apellido">Apellido</label><br>
+              <input type="text" id="apellido" placeholder="Medina" name="Apellido" required readonly>
+              <br>
+              <br>
+              <label for="documento">Documento</label><br>
+              <input type="text" id="documento" placeholder="741258" name="Documento" required readonly>
+              <br>
+              <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="verDetalle2" role="dialog">
+
+      <div class="modal-dialog">
+        <div class="modal-content modContenido">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+          <div class="modal-body">
+            
+              <h3>INFORMACION</h3>
+              <br><br>
+              <label for="nombre">Nombre</label><br>
+              <input type="text" id="nombre" placeholder="Paola" name="Nombre" required readonly>
+              <br>
+              <br>
+              <label for="apellido">Apellido</label><br>
+              <input type="text" id="apellido" placeholder="Vasco" name="Apellido" required readonly>
+              <br>
+              <br>
+              <label for="documento">Documento</label><br>
+              <input type="text" id="documento" placeholder="369852" name="Documento" required readonly>
+              <br>
+              <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="verDetalle3" role="dialog">
+
+      <div class="modal-dialog">
+        <div class="modal-content modContenido">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+          <div class="modal-body">
+            
+              <h3>INFORMACION</h3>
+              <br><br>
+              <label for="nombre">Nombre</label><br>
+              <input type="text" id="nombre" placeholder="Sebastian" name="Nombre" required readonly>
+              <br>
+              <br>
+              <label for="apellido">Apellido</label><br>
+              <input type="text" id="apellido" placeholder="Itaki" name="Apellido" required readonly>
+              <br>
+              <br>
+              <label for="documento">Documento</label><br>
+              <input type="text" id="documento" placeholder="789369" name="Documento" required readonly>
+              <br>
+              <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="verDetalle4" role="dialog">
+
+      <div class="modal-dialog">
+        <div class="modal-content modContenido">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+          <div class="modal-body">
+            
+              <h3>INFORMACION</h3>
+              <br><br>
+              <label for="nombre">Nombre</label><br>
+              <input type="text" id="nombre" placeholder="Valeria" name="Nombre" required readonly>
+              <br>
+              <br>
+              <label for="apellido">Apellido</label><br>
+              <input type="text" id="apellido" placeholder="Bustamante" name="Apellido" required readonly>
+              <br>
+              <br>
+              <label for="documento">Documento</label><br>
+              <input type="text" id="documento" placeholder="741236" name="Documento" required readonly>
+              <br>
+              <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="verDetalle5" role="dialog">
+
+      <div class="modal-dialog">
+        <div class="modal-content modContenido">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+          <div class="modal-body">
+            
+              <h3>INFORMACION</h3>
+              <br><br>
+              <label for="nombre">Nombre</label><br>
+              <input type="text" id="nombre" placeholder="Evelin" name="Nombre" required readonly>
+              <br>
+              <br>
+              <label for="apellido">Apellido</label><br>
+              <input type="text" id="apellido" placeholder="Rendon" name="Apellido" required readonly>
+              <br>
+              <br>
+              <label for="documento">Documento</label><br>
+              <input type="text" id="documento" placeholder="132745" name="Documento" required readonly>
+              <br>
+              <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="verDetalle6" role="dialog">
+
+      <div class="modal-dialog">
+        <div class="modal-content modContenido">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+          <div class="modal-body">
+            
+              <h3>INFORMACION</h3>
+              <br><br>
+              <label for="nombre">Nombre</label><br>
+              <input type="text" id="nombre" placeholder="Manual" name="Nombre" required readonly>
+              <br>
+              <br>
+              <label for="apellido">Apellido</label><br>
+              <input type="text" id="apellido" placeholder="aja" name="Apellido" required readonly>
+              <br>
+              <br>
+              <label for="documento">Documento</label><br>
+              <input type="text" id="documento" placeholder="654852" name="Documento" required readonly>
+              <br>
+              <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="verDetalle7" role="dialog">
+
+      <div class="modal-dialog">
+        <div class="modal-content modContenido">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+          <div class="modal-body">
+            
+              <h3>INFORMACION</h3>
+              <br><br>
+              <label for="nombre">Nombre</label><br>
+              <input type="text" id="nombre" placeholder="Daniela" name="Nombre" required readonly>
+              <br>
+              <br>
+              <label for="apellido">Apellido</label><br>
+              <input type="text" id="apellido" placeholder="Velez" name="Apellido" required readonly>
+              <br>
+              <br>
+              <label for="documento">Documento</label><br>
+              <input type="text" id="documento" placeholder="569874" name="Documento" required readonly>
+              <br>
+              <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="verDetalle8" role="dialog">
+
+      <div class="modal-dialog">
+        <div class="modal-content modContenido">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+          <div class="modal-body">
+            
+              <h3>INFORMACION</h3>
+              <br><br>
+              <label for="nombre">Nombre</label><br>
+              <input type="text" id="nombre" placeholder="Hugo" name="Nombre" required readonly>
+              <br>
+              <br>
+              <label for="apellido">Apellido</label><br>
+              <input type="text" id="apellido" placeholder="Berrio" name="Apellido" required readonly>
+              <br>
+              <br>
+              <label for="documento">Documento</label><br>
+              <input type="text" id="documento" placeholder="412563" name="Documento" required readonly>
+              <br>
+              <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="verDetalle9" role="dialog">
+
+      <div class="modal-dialog">
+        <div class="modal-content modContenido">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+          <div class="modal-body">
+            
+              <h3>INFORMACION</h3>
+              <br><br>
+              <label for="nombre">Nombre</label><br>
+              <input type="text" id="nombre" placeholder="Carmelo" name="Nombre" required readonly>
+              <br>
+              <br>
+              <label for="apellido">Apellido</label><br>
+              <input type="text" id="apellido" placeholder="Valencia" name="Apellido" required readonly>
+              <br>
+              <br>
+              <label for="documento">Documento</label><br>
+              <input type="text" id="documento" placeholder="365214" name="Documento" required readonly>
+              <br>
+              <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" ></script>
+  
+    <script>$(document).ready(function() {
+      $('#tablita').DataTable();
+  } );</script>
+</body>
+</html>

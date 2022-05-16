@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+        integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>CHECHO BARBERS</title>
+    <script>
+
+      function validarLogin() {
+            let usu = document.getElementById("usu").value;
+            let pas = document.getElementById("pas").value;
+      
+            if (usu == "admin") {
+              if (pas == "12345") {
+                localStorage.getItem("Admin");
+                alert("Binvenido Administrador ");
+                window.open("indexAdmin.html");
+              }
+            } else if (usu == "empleado") {
+      
+                if (pas == "12345"){
+                  localStorage.getItem("empleado");
+                  alert("Binvenido Empleado ");
+                  window.open("indexEmpleado.html");
+                }
+            }else if (usu == "usuario"){
+              if (pas == "12345") {
+                    localStorage.getItem("usuario");
+                    alert("Binvenido usuario ");
+                    window.open("index.html");
+                  }
+      
+            }else {
+              alert("error en usuario o password");
+            }
+      
+      
+          }
+
+          function index(){
+
+            let c = document.getElementById("cantidadPersonas").value;
+            let h = document.getElementById("horario").value;
+
+            if(c && h != null  ){
+
+              alert("Gracias por Preferir nuestro servicio");
+
+              window.open("indexAdmin.html");
+
+            }else{
+
+              alert("Ningun campo puede estar vacio");
+            }
+            
+          }
+
+          function indexU(){
+            alert("Sesión Cerrada")
+            window.open("../index.html");
+
+          }
+         
+  
+          
+        </script>
+</head>
+
+<body>
+  <div id="posicion">
+    <header class="header"></header>
+    <nav class="nav">
+
+      <div class="line">
+        <ul>
+          <li>
+            <button type="button" class="btn btn-secondary color1"><a href="indexAdmin.html">Inicio</a></button>
+
+          </li>
+          <li>
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Agenda tu cita
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item color" href="horarioAd.html"> Horarios </a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Servicios
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item color" href="portafolioAd.html">Barbas</a>
+                <a class="dropdown-item color" href="portafolioAd.html">Cortes de cabello</a>
+                <a class="dropdown-item color" href="portafolioAd.html">Tintura</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle " href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Clientes
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item color " href="listarClientesAd.html"> Listar clientes</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle " href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Empleados
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item color " href="listarEmpleados.html"> Listar empleados</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <button type="button" class="btn btn-secondary color1"><a href="#contacto">Contacto</a></button>
+          </li>
+        </ul>
+      </div>
+      <div class="line">
+        <ul>
+          
+          <li>
+            <button type="button" class="btn btn-secondary color1" data-target="#loginn" onclick="indexU()">Cerrar sesión</button>
+
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+    <div id="fondoHorario">
+      <main id="main">
+          <div id="fecha">
+              <form action="" id="f">
+                  <label for="cantidadPersonas">Cantidad de personas</label>
+                  <br>
+                  <input type="text" id="cantidadPersonas" placeholder="--" required >
+                  <br><br>
+                  <label for="horario">Dia y hora</label>
+                  <br>
+                  <input type="datetime-local" id="horario" required ><br><br>
+                  <input type="submit" value="Agendar cita" onclick="index()">
+              </form>
+          </div>
+      </main>
+    </div>
+    
+    <footer>
+
+        <div>
+            <h5>CHECHO BARBER</h5>
+            <p>Copyright © 2022 Todos los derechos reservados</p>
+            <p>Desarrollado por Juan Urrutia - Cristian Arboleda</p>
+        </div>
+        <div>
+            <h5 id="contacto">CONTACTO</h5>
+            <p> Telefono (3714526)</p>
+            <p>Gmail (chechobarber@gmail.com)</p>
+
+        </div>
+
+        <div>
+            <h5>UBICACION</h5>
+            <a target="_blank"
+                href="https://www.google.com.co/maps/place/Caicedo,+Medell%C3%ADn,+Antioquia/@6.2425134,-75.5592871,16z/data=!3m1!4b1!4m5!3m4!1s0x8e44285c24125bc7:0x6dde4ed383b2b37c!8m2!3d6.2422512!4d-75.5545989?authuser=0&hl=es-419"><img
+                    src="../img/maps.jpg" alt="maps" id="im4"></a>
+
+        </div>
+    </footer>
+
+    <div class="modal fade" id="registroo" role="dialog">
+
+      <div class="modal-dialog">
+        <div class="modal-content modContenido">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+          <div class="modal-body">
+            
+            <h3>DATOS PERSONALES</h3>
+            <br><br>
+            <label for="nombre"  >Nombre</label>
+            <input class="form-control" type="text" id="nombre" required>
+            <br>
+  
+            <label for="direccion" >Direccion</label>
+            <input class="form-control" type="text" id="direccion " required >
+            <br>
+  
+            <label for="documento"  >Documento</label>
+            <input class="form-control" type="text" id="documento" required>
+            <br>
+  
+            <label for="correo"  >Usuario</label>
+            <input class="form-control" type="text" id="correo" required>
+            <br>
+  
+            <label for="contrasena" >Contraseña</label>
+            <input class="form-control" type="text" id="contrasena" placeholder="*********" required >
+  
+            <br>
+            <button type="button" class="btn btn-outline-primary">Registrarse</button>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+   
+    <div class="modal fade" id="loginn" role="dialog">
+  
+      <div class="modal-dialog">
+        <div class="modal-content modContenido">
+  
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+  
+          <div class="modal-body">
+            
+              <h3>INICIAR SESIÓN</h3>
+              <br><br>
+              
+              <div class=" section">
+                <section id="for">
+                    <form action="" id="form" method="" onsubmit= "validarLogin();">
+        
+                        <label for="usu">Usuario</label><br>
+        
+                        <input type="text" id="usu" name="username"><br>
+        
+                        <label for="pas">password</label><br>
+        
+                        <input type="text" id="pas" name="password" placeholder="*******"><br><br>
+        
+                        <button type="submit" name="enviar" class="btn btn-success">Iniciar sesion</button>
+        
+                    </form>
+                </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+</body>
+
+</html>
